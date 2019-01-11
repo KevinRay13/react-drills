@@ -3,16 +3,24 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state= {
+      str: ''
+    }
+    this.stringWrite = this.stringWrite.bind(this)
+  }
+  stringWrite(e) {
+    this.setState({str: e.target.value})
+  }
+  
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <input type="text" 
+        placeholder="type here"
+        onChange={(e) => this.stringWrite(e)}/>
+        <h2>{this.state.str}</h2>
       </div>
     );
   }
